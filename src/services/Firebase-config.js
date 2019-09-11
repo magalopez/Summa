@@ -18,8 +18,14 @@ const firebaseConfig = {
 export const firebaseInit = firebase.initializeApp(firebaseConfig);
 
 
-const firestore = firebase.firestore();
+export const firestore = firebase.firestore();
+
 
 export const PRODUCTSDATA = firestore.collection("products");
 
 export const ORDERSDATA = firestore.collection("pedidos");
+
+
+//Auth
+
+export const authentication = firebase.auth();

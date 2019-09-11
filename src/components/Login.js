@@ -1,5 +1,6 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
+import FormLogIn from './Login/Form'
 
 
 function Login () {
@@ -9,9 +10,8 @@ function Login () {
       <button>Volver</button>
       </Link>
       <h1>LOGIN VIEW</h1>
-      <Link to={'/Admin'}>
-      <button>Entrar</button>
-      </Link>
+
+      <FormLogIn />
     </>
   )
 }
