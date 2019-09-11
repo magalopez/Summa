@@ -12,12 +12,23 @@ function Header ({event, eventlogo}) {
         <Link to="/"><h1 onClick={()=>{eventlogo('todos')}}>Summa</h1></Link>
       </div>
      
-      <div className="btn-login">
-        {auth === true ?  <Link to="/admin"><button>Administrador</button></Link> :  <Link to="/login"><button>Administrador</button></Link>}       
-      </div>   
+      <div className="btn-admin">
+        {auth === true ?  
+        <Link to="/admin">
+          <button className="button" >Administrador</button>
+        </Link> :  
+        <Link to="/login">
+           <button className="button" >Administrador</button>
+        </Link>}  
+      </div>
 
-      <div>
-        {auth === true ? <> </> : <input type="text" onChange={event}/>}
+      <div className="box-input">
+        {auth === true ? <> </> : 
+        <>
+          <input type="text" onChange={event}/>
+          <span class="bar"></span>
+          <label>Buscar</label>
+        </>}
       </div>
     </header>
   )
