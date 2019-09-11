@@ -1,8 +1,11 @@
-import React from 'react'
+import React, { useContext } from 'react';
 import { Link } from "react-router-dom"
+import { AuthUserContext } from '../../Context'
 
 function Header ({event, eventlogo}) {
   
+  const [ auth ] = useContext(AuthUserContext)
+
   return (
     <header>
       <div className="logo">
@@ -10,11 +13,11 @@ function Header ({event, eventlogo}) {
       </div>
      
       <div className="btn-login">
-        <Link to="/login"><button>Administrador</button></Link>
+        {auth === true ?  <Link to="/admin"><button>Administrador</button></Link> :  <Link to="/login"><button>Administrador</button></Link>}       
       </div>   
 
       <div>
-        <input type="text" onChange={event}/>
+        {auth === true ? <> </> : <input type="text" onChange={event}/>}
       </div>
     </header>
   )
