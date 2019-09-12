@@ -1,29 +1,27 @@
 import authentication from '../Firebase-config'
-import firestore from '../Firebase-config'
 
 export const registerUser = (emailSignIn, passwordSignIn) => {
   return authentication.createUserWithEmailAndPassword(emailSignIn, passwordSignIn)
 };
 
-export const loginUser = (emailLogIn, passwordLogIn) => {
+const loginUser = (emailLogIn, passwordLogIn) => {
   return authentication.signInWithEmailAndPassword(emailLogIn, passwordLogIn)
 };
 
-export const db = ()=>{
-  return firestore.firestore();
-}
-
-export const getUser = () => {
+const getUser = () => {
   return authentication.currentUser;
 }
 
-export const activeUser = (u2) => {
+const activeUser = (u2) => {
 	return authentication.onAuthStateChanged((u2));
 }
 
-export const exit = () => {
+const exit = () => {
   return authentication.signOut()
 };
+
+export default registerUser
+
 
 // Save names users loggedOn with Google and Facebook
 // export const createUser = (cred) => {

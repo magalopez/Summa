@@ -23,12 +23,9 @@ function Header ({event, eventlogo}) {
       </div>
 
       <div className="box-input">
-        {auth === true ? <> </> : 
-        <>
           <input type="text" onChange={event}/>
           <span class="bar"></span>
           <label>Buscar</label>
-        </>}
       </div>
     </header>
   )

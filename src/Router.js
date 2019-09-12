@@ -23,6 +23,14 @@ function Ruter () {
     )} />
   );
 
+  const ActiveUser = ({ component: Component, ...rest}) => (
+    <Route {...rest} render={(props) => (
+      auth === true
+        ? <Admin to='/admin' /> 
+        : <Component {...props} />
+    )} />
+  )
+
   console.log('ruter', auth)
 
 
@@ -32,7 +40,7 @@ function Ruter () {
               <Switch>
                 <Route exact path="/" component={Home} />
                 <Route exact path="/detalles" component={Details}/>
-                <Route path="/login" component={Login} />
+                <ActiveUser path="/login" component={Login} />
                 <SecretRoute path="/admin" component={Admin}/>   
                 <Route component={Default} /> 
               </Switch>
