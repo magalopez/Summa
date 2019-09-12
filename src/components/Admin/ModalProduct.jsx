@@ -1,5 +1,5 @@
 import React from 'react'
-import './modal.css'
+
 
 
 function ModalProduct ({handleClose, show, children }) {
@@ -8,9 +8,9 @@ function ModalProduct ({handleClose, show, children }) {
   return (
     <>
       <div className={showHideClassName}>
-        <section className="modal-main">
+        <section className="form ">
           {children}
-        <button onClick={()=>handleClose()}>Agregar</button>
+        <button onClick={()=>handleClose()}>Cancelar</button>
       </section>
       </div>
     </>

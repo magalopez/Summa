@@ -1,10 +1,10 @@
 import React from 'react'
 import TrProduct from './Products'
-import './table.css' 
+// import './table.css' 
 
 function Table ({data}) {
   return (
-    <>
+    <div className='container-list'>
       <table className="fixed_headers">
         <thead>
           <tr>
@@ -21,7 +21,7 @@ function Table ({data}) {
           <TrProduct key={`ProductItem-${prod.title}`} data={prod} edit={'edit'} remove={'remove'}/>))}
         </tbody>
       </table>
-    </>
+    </div>
   )
 }
 export default Table

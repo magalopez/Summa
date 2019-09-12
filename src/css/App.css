@@ -15,6 +15,7 @@ header
 {
   display: flex;
   flex-direction: row;
+  flex-wrap: wrap;
   justify-content: space-around;  
   padding: 1.2em;
   box-shadow:0px 0px 8px 0px rgba(0,0,0,0.75);
@@ -135,7 +136,9 @@ input:focus ~ .bar:before, input:focus ~ .bar:after {
 .nav_categories ul 
 {
   display: flex;
-  justify-content: center
+  justify-content: center;
+  flex-wrap: wrap;
+
 }
 
 .nav_categories ul li 
@@ -149,6 +152,8 @@ input:focus ~ .bar:before, input:focus ~ .bar:after {
 {
   display: flex;
   justify-content: space-around;
+  flex-wrap: wrap;
+
 }
 
 
@@ -226,4 +231,117 @@ input:focus ~ .bar:before, input:focus ~ .bar:after {
   text-align: center;
 }
 
+/* VIEW ADMIN */
+
+/* TABLA */
+
+
+.fixed_headers {
+  width: 750;
+  table-layout: fixed;
+  border-collapse: collapse;
+}
+
+th { text-decoration: underline; }
+  
+th, td {
+  padding: 5px;
+  text-align: left;
+}
+  
+td:nth-child(1), th:nth-child(1) { min-width: 200px; }
+td:nth-child(2), th:nth-child(2) { min-width: 400px; }
+td:nth-child(3), th:nth-child(3) { min-width: 200px; }
+td:nth-child(4), th:nth-child(4) { width: 200px; }
+td:nth-child(5), th:nth-child(5) { width: 200px; }
+
+thead {
+  background-color: #DDD;
+  color:#FDFDFD;   
+}
+
+tr {
+  display: block;
+  /* position: relative; */
+}
+
+tbody {
+  display: block;
+  /* overflow: auto; */
+  width: 100%;
+  height: 300px;
+}
+
+
+/* MODAL */
+
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width:100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.6);
+}
+
+.modal-main {
+  position:fixed;
+  background: white;
+  width: 80%;
+  height: auto;
+  top:50%;
+  left:50%;
+  transform: translate(-50%,-50%);
+}
+
+.display-block {
+  display: block;
+}
+
+.display-none {
+  display: none;
+}
+
+.form {
+  position: relative;
+  z-index: 3;
+  background: #FFFFFF;
+  max-width: 600px;
+  margin: 0 auto 100px;
+  margin-top: 15%;
+  padding: 45px;
+  text-align: center;
+  box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
+}
+
+.form button {
+  /* font-family: "Roboto", sans-serif; */
+  text-transform: uppercase;
+  outline: 0;
+  background: #4CAF50;
+  width: 30%;
+  border: 0;
+  padding: 15px;
+  color: #FFFFFF;
+  font-size: 14px;
+  -webkit-transition: all 0.3 ease;
+  transition: all 0.3 ease;
+  cursor: pointer;
+  margin: 20px;
+}
+.form button:hover,.form button:active,.form button:focus {
+  background: #43A047;
+}
+
+.form input {
+  font-family: "Roboto", sans-serif;
+  outline: 0;
+  background: #f2f2f2;
+  width: 100%;
+  border: 0;
+  margin: 0 0 15px;
+  padding: 15px;
+  box-sizing: border-box;
+  font-size: 14px;
+}
 

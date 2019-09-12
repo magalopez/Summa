@@ -49,7 +49,6 @@ function Login () {
       <Link to={'/'}>
       <h1>HOME</h1>
       </Link>
-      
       <FormLogIn login={submit} email={changeEmail} password={changePassword} />
     </>
   )

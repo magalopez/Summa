@@ -9,29 +9,68 @@ function SectionProducts ({data}) {
   const [name,setName] = useState('');
   const [description, setDescription] = useState('')
   const [price, setPrice] = useState(0)
-  const [categorie, setCategorie] = useState('')
+  const [category, setCategory] = useState('')
   const [image, setImage] = useState('')
   const [show, setShow] = useState(false)
 
   const showModal = () => setShow(true)
+  
   const hideModal = () => setShow(false) 
-
+  
+  const handlerName = (e) => setName(e.target.value.toLowerCase())
+  
+  const handlerDescription = (e) => setDescription(e.target.value.toLowerCase())
+  
+  const handlerPrice = (e) => setPrice(e.target.value.toLowerCase())
+  
+  const handlerCategorie = (e) => setCategory(e.target.value.toLowerCase())
+  
+  const handlerImage = (e) => setImage(e.target.value.toLowerCase())
 
   const addProductData = async () => {
-    try {
+    try 
+    {
       await firestore.collection('products').add({
-			  name: name,
+			  title: name,
 			  description: description,
 			  price: price,
-        categorie: categorie,
+        category: category,
         image: image
 		  })
-    } catch (e) {
+    } 
+    catch (e) 
+    {
       alert(e)
+    }
+  }
+
+  const editProductData = async (productId,name,description,price,category,image) => {
+    try 
+    {
+      await firestore.collection('products').doc(productId).update({
+        title: name,
+			  description: description,
+			  price: price,
+        category: category,
+        image: image
+      })
+    }
+    catch (e)
+    {
+      alert(e)
+    }
+  }
+
+  const deleteProduct = async (postId) => {
+  try
+  {
+  await firestore.collection("products").doc(postId).delete();
+  }
+  catch
+  {
+    alert(e)
   }
 }
-
-  console.log('show',show)
 
   return (
     <>
@@ -40,12 +79,16 @@ function SectionProducts ({data}) {
         <input type="submit" value="Agregar Producto" className="button" onClick={()=> showModal()}/>      
       </div>
       <ModalProduct handleClose={hideModal} show={show}>
-        <p>Modal</p>
-        <p>Data</p>
-      </ModalProduct>
-      <div className='container-list'> 
-        <Table data={data}/>
-      </div>
+        <form className="register-form">
+          <input type="text" placeholder="nombre" onChange={handlerName}/>
+          <input type="text" placeholder="descripcion" onChange={handlerDescription}/>
+          <input type="number" placeholder="precio" onChange={handlerPrice}/>
+          <input type="text" placeholder="categoria" onChange={handlerCategorie}/>
+          <input type="text" placeholder="imagen" onChange={handlerImage}/>
+        </form>
+        <button onClick={()=>addProductData()}>Guardar</button>
+      </ModalProduct> 
+      <Table data={data}/>
     </>
   )
 }

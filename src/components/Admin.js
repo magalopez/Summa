@@ -23,6 +23,7 @@ function Admin () {
     }
   }
 
+  console.log(products)
   return (
     <>
       <herder>
