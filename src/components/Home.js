@@ -1,19 +1,19 @@
-import React, { useContext } from 'react'
-import { Link } from 'react-router-dom'
-import Header from './Home/Header'
-import Container from './Home/Products'
+import React, { useContext, useState } from 'react'
+
+//API Contex
 import { ProductsContext, CategoriesContext, SearchContext } from '../Context'
 
-
+//Components
+import Header from './Home/Header'
+import ContainerProducts from './Home/Products'
+import ModalDetail from './Home/Modal'
 
 function Home () {
-  const [PRODUCTS, SETPRODUCTS] = useContext(ProductsContext);
+  const [PRODUCTS,] = useContext(ProductsContext);
   const [CATEGORIES, SETCATEGORIES] = useContext(CategoriesContext);
   const [SEARCH, SETSEARCH] = useContext(SearchContext);
-
-  // console.log('home', PRODUCTS)
-  // console.log('home', CATEGORIES)
-  // console.log('home', SEARCH)
+  const [MODAL, SETMODAL] = useState(false)
+  const [PRODMODAL, SETPRODMODAL] = useState({})
 
   //Categories
   const uniqueItems = (x, i, array) => array.indexOf(x) === i;
@@ -31,10 +31,21 @@ function Home () {
     SETSEARCH(e.target.value);
   }
 
+  const showModal = ({id,title,price,description,image}) => {
+    SETMODAL(true)
+    SETPRODMODAL({id,title,price,description,image})
+  }
+ 
+  const hideModal = () => SETMODAL(false) 
+  
   return (
     <>
       <Header event={handlerSearch} eventlogo={changeCategory}/>
-      <Container data={PRODUCTS} categories={PRODUCT_CATEGORIES} changeCategory={changeCategory} displayCategory={CATEGORIES} search={SEARCH}/>
+      { MODAL !== true ? 
+      <ContainerProducts data={PRODUCTS} categories={PRODUCT_CATEGORIES} changeCategory={changeCategory} displayCategory={CATEGORIES} search={SEARCH} modal={showModal}/> :
+      <ModalDetail object={PRODMODAL} handleClose={hideModal} show={MODAL}/>
+    }
+      
     </>
   )
 }

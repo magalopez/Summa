@@ -4,7 +4,7 @@ import Categories from './Categories'
 // import { Link } from "react-router-dom"
 
 
-function Container ({data, categories, changeCategory, displayCategory,search}) {
+function ContainerProducts ({data, categories, changeCategory, displayCategory,search, modal}) {
 
   const itemCategory = categories.map((category) => {
     return <Categories name={category} event={()=>{changeCategory(category)}} />
@@ -14,7 +14,7 @@ function Container ({data, categories, changeCategory, displayCategory,search}) 
   const filteredCategory = data.filter(({category}) =>
   displayCategory === category || displayCategory === "todos"
  ).map(({ title, price, description, id, image})=>( 
- <Card key={`ProductItem-${title}`} id={id} title={title} price={price} description={description} image={image}/>
+ <Card key={`ProductItem-${title}`} id={id} title={title} price={price} description={description} image={image} modal={modal}/>
  ));
 
   // const filteredSearch = data.filter((element) => element.title.toLowerCase().includes(search.toLowerCase())).map(({ title, price, description})=>( <Card key={`ProductItem-${title}`} title={title} price={price} description={description}/>));
@@ -33,5 +33,5 @@ function Container ({data, categories, changeCategory, displayCategory,search}) 
   );
 }
 
-export default Container;
+export default ContainerProducts;
 

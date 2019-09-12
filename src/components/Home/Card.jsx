@@ -3,15 +3,15 @@ import React from 'react'
 import { Link } from "react-router-dom"
 
 
-function Card ({id,title,price,description,image}) {
+function Card ({id,title,price,description,image,modal}) {
   return (
     <div class="container-card">
       <div class="card">
-      <Link to={`/detalle/${id}`}>
-        <div class="card-head">
+      {/* <Link to={`/detalle/${id}`}> */}
+        <div class="card-head" onClick={()=>{modal({id,title,price,description,image,})}}>
           <img src={image} alt="product" class="product-img"/>
         </div>
-      </Link>
+      {/* </Link> */}
  
     <div class="card-body">
       <div class="product-desc">
