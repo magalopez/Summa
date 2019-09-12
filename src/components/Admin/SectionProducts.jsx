@@ -6,6 +6,7 @@ import {firestore} from '../../services/Firebase-config'
 import ModalProduct from './ModalProduct';
 
 function SectionProducts ({data}) {
+  const [id, setId] = useState('');
   const [name,setName] = useState('');
   const [description, setDescription] = useState('')
   const [price, setPrice] = useState(0)
@@ -17,20 +18,23 @@ function SectionProducts ({data}) {
   
   const hideModal = () => setShow(false) 
   
+  const handlerId = (e) => setId(e.target.value.toLowerCase())
+
   const handlerName = (e) => setName(e.target.value.toLowerCase())
   
-  const handlerDescription = (e) => setDescription(e.target.value.toLowerCase())
+  const handlerDescription = (e) => setDescription(e.target.value.toUpperCase())
   
-  const handlerPrice = (e) => setPrice(e.target.value.toLowerCase())
+  const handlerPrice = (e) => setPrice(e.target.value)
   
   const handlerCategorie = (e) => setCategory(e.target.value.toLowerCase())
   
-  const handlerImage = (e) => setImage(e.target.value.toLowerCase())
+  const handlerImage = (e) => setImage(e.target.value)
 
   const addProductData = async () => {
     try 
     {
       await firestore.collection('products').add({
+        id: id,
 			  title: name,
 			  description: description,
 			  price: price,
@@ -66,7 +70,7 @@ function SectionProducts ({data}) {
   {
   await firestore.collection("products").doc(postId).delete();
   }
-  catch
+  catch (e)
   {
     alert(e)
   }
@@ -80,11 +84,12 @@ function SectionProducts ({data}) {
       </div>
       <ModalProduct handleClose={hideModal} show={show}>
         <form className="register-form">
-          <input type="text" placeholder="nombre" onChange={handlerName}/>
-          <input type="text" placeholder="descripcion" onChange={handlerDescription}/>
-          <input type="number" placeholder="precio" onChange={handlerPrice}/>
-          <input type="text" placeholder="categoria" onChange={handlerCategorie}/>
-          <input type="text" placeholder="imagen" onChange={handlerImage}/>
+          <input type="text" placeholder="Id" maxLength="10" onChange={handlerId}/>
+          <input type="text" placeholder="Nombre" maxLength="30" onChange={handlerName}/>
+          <input type="text" placeholder="Descripcion" maxLength="190" onChange={handlerDescription}/>
+          <input type="number" placeholder="Precio" max="6" onChange={handlerPrice}/>
+          <input type="text" placeholder="Categoria" maxLength="15" onChange={handlerCategorie}/>
+          <input type="text" placeholder="Imagen" maxLength="150" onChange={handlerImage}/>
         </form>
         <button onClick={()=>addProductData()}>Guardar</button>
       </ModalProduct> 
