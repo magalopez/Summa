@@ -16,12 +16,12 @@ function Header ({event, eventlogo}) {
         <Link to="/carrito">
           <button className="button" >Carrito</button>
         </Link> 
-        {auth === true ?  
+          {auth === true ?  
         <Link to="/admin">
           <button className="button" >Administrador</button>
         </Link> :  
         <Link to="/login">
-           <button className="button" >Administrador</button>
+          <button className="button" >Administrador</button>
         </Link>}  
       </div>
 

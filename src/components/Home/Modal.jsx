@@ -1,5 +1,5 @@
 import React from 'react'
-import './modal.css'
+// import './modal.css'
 
 function ModalDetail ({object, show, handleClose,addCart}) {
 

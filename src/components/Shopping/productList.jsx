@@ -7,17 +7,32 @@ const ProductList = ({
   addToCart,
   removeFromCart,
   deleteFromCart,
-  getTotal,
   sendOrders,
   client
 }) => {
+  
+  const getTotal = products => {
+    let emptyArray = [];
+    let emptyArrayContent = 0;
+    products.forEach(prod => {
+      return emptyArray.push(prod.object.price);
+    });
 
+    emptyArray.forEach(prod => {
+      return (emptyArrayContent += prod);
+    });
+    return emptyArrayContent;
+  };
 
-  console.log('productlist', products)
   return (
-      <div >
+      <div className="container-cart">
         <h2>{client}</h2>
-        <div>
+        <table className="table-cart">
+          <tr>
+            <th>Producto</th>
+            <th>Precio </th>
+            <th></th>
+          </tr>
           {products.map(prod => (
             <Product
               key={prod.object.id}
@@ -29,12 +44,12 @@ const ProductList = ({
               deleteFromCart={() => deleteFromCart(prod.object.id)}
             />
           ))}
-        </div>
+        </table>
         <ButtonOfTotal
-          total={()=>getTotal(products)}
           products={products}
           sendOrders={sendOrders}
           client={client}
+          getTotal={getTotal(products)}
         />
       </div>
   );

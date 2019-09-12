@@ -2,7 +2,7 @@
   "name": "summatwo",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://github.com/magalopez/summa/src/html.index",
+  "homepage": "https://github.com/magalopez/summa/",
   "dependencies": {
     "firebase": "^6.6.0",
     "gh-pages": "^2.1.1",

@@ -15,7 +15,7 @@ function Home () {
   const [MODAL, SETMODAL] = useState(false)
   const [PRODMODAL, SETPRODMODAL] = useState({})
   const [cart, setCart] = useContext(CartContext);
-
+  const [viewProductSearch, setViewProductSearch] = useState(false)
   //Categories
   const uniqueItems = (x, i, array) => array.indexOf(x) === i;
 
@@ -30,6 +30,7 @@ function Home () {
 
   const handlerSearch = (e) => {
     SETSEARCH(e.target.value);
+    setViewProductSearch(true)
   }
 
   const showModal = ({id,title,price,description,image}) => {
@@ -45,16 +46,13 @@ function Home () {
     SETMODAL(false)
   }
 
-  console.log(cart)
-  
+    
   return (
     <>
       <Header event={handlerSearch} eventlogo={changeCategory}/>
       { MODAL !== true ? 
-      <ContainerProducts data={PRODUCTS} categories={PRODUCT_CATEGORIES} changeCategory={changeCategory} displayCategory={CATEGORIES} search={SEARCH} modal={showModal}/> :
-      <ModalDetail object={PRODMODAL} addCart={addProductCart} handleClose={hideModal} show={MODAL}/>
-    }
-      
+      <ContainerProducts show={viewProductSearch} data={PRODUCTS} categories={PRODUCT_CATEGORIES} changeCategory={changeCategory} displayCategory={CATEGORIES} search={SEARCH} modal={showModal}/> :
+      <ModalDetail object={PRODMODAL} addCart={addProductCart} handleClose={hideModal} show={MODAL}/>}
     </>
   )
 }

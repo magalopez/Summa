@@ -9,13 +9,13 @@ function Client ({ client, setClient }){
   };
 
   return (
-    <div >
-      <div>
-          <h2>¿Cómo te llamas?</h2>
-          <br/>
+  
+      <div className="form-cart">
+        <h2>¿Cómo te llamas?</h2>
+          <form>
           <input className="input" onChange={onChange} value={client} />
+          </form>
       </div>
-    </div>
   );
 };
 

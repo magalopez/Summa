@@ -1,3 +1,4 @@
+/* eslint-disable jsx-a11y/anchor-is-valid */
 import React from 'react'
 
 function TrProduct ({data, edit, remove }) {
@@ -7,7 +8,9 @@ function TrProduct ({data, edit, remove }) {
       <td>{data.description}</td>
       <td>{data.category}</td>
       <td>{`S./ ${data.price}`}</td>
+
       <td><a onClick={()=>edit(data.id)}>{'editar'}</a></td>
+      
       <td><a onClick={()=>remove(data.id)}>{'remove'}</a></td>
     </tr>
   )

@@ -1,6 +1,6 @@
 import React from 'react'
 import TrProduct from './Products'
-import './table.css' 
+
 
 function Table ({data, edit, remove}) {
   return (

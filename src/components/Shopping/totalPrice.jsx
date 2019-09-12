@@ -1,8 +1,11 @@
 import React from "react";
 
-const ButtonOfTotal = ({ total, sendOrders, products, client }) => {
+const ButtonOfTotal = ({getTotal, sendOrders, products, client }) => {
 
-  console.log(total,'whaaat')
+  console.log(getTotal)
+ 
+      
+  // console.log(handlr,'whaaat')
   const formatNumber = number =>
     new Intl.NumberFormat("en-US", {
       mininumFractionDigits: 2,
@@ -10,25 +13,15 @@ const ButtonOfTotal = ({ total, sendOrders, products, client }) => {
     }).format(number);
 
   return (
-    <div className="buttons has-addons box is-centered">
-      <button className="button is-dark">
-        <span className="icon">
-          <i className="fas fa-money-bill"></i>
-        </span>
-        <span>${formatNumber(total)}</span>
+    <div>
+      <button className="button">S./{formatNumber(getTotal)}
       </button>
-
       <a
         href="/#"
-        className="button is-dark"
+        className="button"
         onClick={() => {
-          console.log("sjsjs");
           sendOrders(products, client);
-        }}
-      >
-        <span className="icon">
-          <i className="fas fa-receipt"></i>
-        </span>
+        }}>
         <span>enviar orden</span>
       </a>
     </div>

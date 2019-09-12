@@ -23,5 +23,5 @@ export const authentication = firebase.auth();
 
 export const PRODUCTSDATA = firestore.collection("products");
 
-export const ORDERSDATA = firestore.collection("pedidos");
+export const ORDERSDATA = firestore.collection("orders");
 

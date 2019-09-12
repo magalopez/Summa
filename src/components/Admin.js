@@ -9,6 +9,7 @@ import { authentication } from '../services/Firebase-config'
 import SectionProducts from './Admin/SectionProducts';
 import MenuOps from './Admin/MenuOps';
 import SectionUsers from './Admin/SectionUsers';
+import SectionOrders from './Admin/SectionOrders';
 
 function Admin () {
   const [secProd, setSecProd] = useState(true)
@@ -54,7 +55,7 @@ function Admin () {
       <section className="sections">
         {secProd===true ? <SectionProducts data={products}/> : <></>}
         {secUser===true ? <SectionUsers/> : <></>}
-        {secOrder===true ? <div><h1>ORDERS</h1></div> : <></>}
+        {secOrder===true ? <SectionOrders/> : <></>}
       </section>
 
   
