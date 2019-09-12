@@ -13,9 +13,6 @@ function SectionProducts ({data}) {
   const [image, setImage] = useState('')
   const [show, setShow] = useState(false)
 
-
-
-
   const showModal = () => setShow(true)
   
   const hideModal = () => setShow(false) 
@@ -78,8 +75,8 @@ function SectionProducts ({data}) {
 
   return (
     <>
-      <div className="container-section-products">
-        <h2>Productos</h2>
+      <div className="section-products">
+        <h1>Productos</h1>
         <input type="submit" value="Agregar Producto" className="button" onClick={()=> showModal()}/>      
       </div>
       <ModalProduct handleClose={hideModal} show={show}>

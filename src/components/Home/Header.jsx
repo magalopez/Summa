@@ -7,7 +7,7 @@ function Header ({event, eventlogo}) {
   const [ auth ] = useContext(AuthUserContext)
 
   return (
-    <header>
+    <header className="header">
       <div className="logo">
         <Link to="/"><h1 onClick={()=>{eventlogo('todos')}}>Summa</h1></Link>
       </div>

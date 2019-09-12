@@ -1,28 +1,18 @@
-import React, { useState } from 'react'
-import './Styles/form.css'
+import React from 'react'
 import { Link } from 'react-router-dom'
 
 
 function FormLogIn ({login , email, password}) {
-
-
   return (
     <>
       <div className="form-wrap">
-		    <div className="tabs">
-			    <h3 className="login-tab">Login</h3>
-		    </div>
-
-		    <div className="tabs-content">
-			    <div id="login-tab-content">
+		 		    <div className="tabs-content">
+			    <div>
 				    <form className="login-form" action="" method="post">
 					    <input type="text" className="input" id="user_login" autocomplete="off" placeholder="Email" onChange={email}/>
 					    <input type="password" className="input" id="user_pass" autocomplete="off" placeholder="Password" onChange={password}/>
               <Link to="/admin"><input type="submit" className="button" value="Login" onClick={()=>login()} /></Link>
 				    </form>
-				    <div className="help-text">
-					    <p><a href="/#">Forget your password?</a></p>
-				    </div>
 			    </div>
 		    </div>
 	    </div>
