@@ -3,7 +3,7 @@ import React from 'react'
 import { Link } from "react-router-dom"
 
 
-function Card ({id,title,price,description,image,badge}) {
+function Card ({id,title,price,description,image}) {
   return (
     <div class="container-card">
       <div class="card">

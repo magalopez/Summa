@@ -31,9 +31,6 @@ function Ruter () {
     )} />
   )
 
-  console.log('ruter', auth)
-
-
   return (
       <>
         <Router>

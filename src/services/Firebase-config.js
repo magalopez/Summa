@@ -20,6 +20,7 @@ export const firebaseInit = firebase.initializeApp(firebaseConfig);
 
 export const firestore = firebase.firestore();
 
+export const authentication = firebase.auth();
 
 export const PRODUCTSDATA = firestore.collection("products");
 
