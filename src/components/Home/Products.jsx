@@ -13,8 +13,8 @@ function Container ({data, categories, changeCategory, displayCategory,search}) 
   // Filters
   const filteredCategory = data.filter(({category}) =>
   displayCategory === category || displayCategory === "todos"
- ).map(({ title, price, description, id})=>( 
- <Card key={`ProductItem-${title}`} id={id} title={title} price={price} description={description}/>
+ ).map(({ title, price, description, id, image})=>( 
+ <Card key={`ProductItem-${title}`} id={id} title={title} price={price} description={description} image={image}/>
  ));
 
   // const filteredSearch = data.filter((element) => element.title.toLowerCase().includes(search.toLowerCase())).map(({ title, price, description})=>( <Card key={`ProductItem-${title}`} title={title} price={price} description={description}/>));

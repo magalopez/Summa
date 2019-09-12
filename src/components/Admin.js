@@ -1,4 +1,4 @@
-import React, { useContext } from 'react'
+import React, { useContext, useState } from 'react'
 import { AuthUserContext, ProductsContext } from '../Context'
 import { Link } from 'react-router-dom'
 
@@ -9,8 +9,11 @@ import { authentication } from '../services/Firebase-config'
 import SectionProducts from './Admin/SectionProducts';
 import MenuOps from './Admin/MenuOps';
 
-
 function Admin () {
+  const [secProd, setSecProd] = useState(false)
+  const [secUser, setSecUser] = useState(false)
+  const [secOrder, setSecOrder] = useState(true)
+
   const [, setAuth ] = useContext(AuthUserContext)
   const [products, setProducts] = useContext(ProductsContext)
   
@@ -22,21 +25,41 @@ function Admin () {
       alert(e)
     }
   }
+  const handlerViewSectionProducts = () => {
+    setSecProd(true)
+    setSecUser(false)
+    setSecOrder(false)
+  }
+  const handlerViewSectionUsers = () => {
+    setSecUser(true)
+    setSecProd(false)
+    setSecOrder(false)
+  }
+  const handlerViewSectionOrders = () => {
+    setSecOrder(true)
+    setSecUser(false)
+    setSecProd(false)
+  }
 
-  console.log(products)
   return (
     <>
-      <herder>
-        <Link to="/"><h1>HOME</h1></Link>
-        <h3>Administrador E-Commerce</h3>
+      <herder className="header">
+        <Link to="/"><img src={"https://image.flaticon.com/icons/svg/263/263115.svg"} className="home"/></Link>
+        <h3 className="admin">Administrador E-Commerce</h3>
+        <button className="button"><Link className="especial" to={'/Login'} onClick={()=>logout()}>Cerrar Sesion</Link></button>
+
       </herder>
-      <MenuOps logout={logout}/>
-      <section>
-      <SectionProducts data={products}/>     
+      <MenuOps logout={logout} products={handlerViewSectionProducts} users={handlerViewSectionUsers} orders={handlerViewSectionOrders}/>
+      <section className="sections">
+        {secProd===true ? <SectionProducts data={products}/> : <></>}
+        {secUser===true ? <div><h1>USERS</h1></div> : <></>}
+        {secOrder===true ? <div><h1>ORDERS</h1></div> : <></>}
       </section>
+      
      
     </>
   )
 }
 
 export default Admin
+
