@@ -40,7 +40,7 @@ function Home () {
   const hideModal = () => SETMODAL(false) 
 
   const addProductCart = (object) => {
-    const newProducts =[...cart, {object}]
+    const newProducts =[...cart, object]
     setCart(newProducts)
     SETMODAL(false)
   }

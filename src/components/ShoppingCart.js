@@ -1,56 +1,96 @@
-import React, { useContext } from 'react'
-import { CartContext } from '../Context'
+import React, {useContext, useState} from 'react'
+import {CartContext, CategoriesContext} from '../Context'
+import {ORDERSDATA} from '../services/Firebase-config'
+
+// Components
+import Client from './Shopping/client'
+import ProductList from './Shopping/productList';
+import Header from './Home/Header'
+
 
 
 function ShoppingCart () {
   const [PRODUCTS, SETPRODUCTS] = useContext(CartContext);
-  
+  const [category, setCategory] = useContext(CategoriesContext)
+  const [client, setClient] = useState('')
   console.log(PRODUCTS); 
+
+
+  //Aumentar contidad de productos de la lista
+  const addToCart = id => {
+    let productsNew = [...PRODUCTS];
+    productsNew.forEach(prod => {
+      if (prod.id === id) {
+        return (prod.counter = prod.counter + 1);
+      }
+    });
+    return SETPRODUCTS(productsNew);
+  };
+
+  //Disminuir cantidad de productos de la lista
+  const removeFromCart = id => {
+    let productsNew = [...PRODUCTS];
+    productsNew.forEach(prod => {
+      if (prod.id === id && prod.counter > 0) {
+        return (prod.counter = prod.counter - 1);
+      }
+    });
+    return SETPRODUCTS(productsNew);
+  };
+
+  //Eliminar producto de la lista
+  const deleteFromCart = id => {
+    let productsNew = [...PRODUCTS];
+    productsNew.forEach((prod, index) => {
+      if (prod.id === id) {
+        return productsNew.splice(productsNew[index], 1);
+      }
+    });
+    return SETPRODUCTS(productsNew);
+  };
+
+  //Suma de todos los elementos de la matriz
+  const getTotal = products => {
+    let emptyArray = [];
+    let emptyArrayContent = 0;
+    products.forEach(prod => {
+      return emptyArray.push(prod.price);
+    });
+
+    emptyArray.forEach(prod => {
+      return (emptyArrayContent += prod);
+    });
+    return emptyArrayContent;
+  };
+
+  const sendOrders = (products, clientName) => {
+    ORDERSDATA.add({
+      name: clientName,
+      cart: products,
+      status: "pendiente",
+      time: new Date()
+    });
+    setClient("");
+    SETPRODUCTS([]);
+  };
+
+  const changeCategory = (category) => {
+    setCategory(category)
+  }
+
   return (
     <>
-      {/* <nav>
-        <ul className="navbar-right">
-        <li><a href="#" id="cart"><i className="fa fa-shopping-cart"></i> Cart <span className="badge">3</span></a></li>
-        </ul>
-      </nav> */}
-
-      <div className="container">
-        <div className="shopping-cart">
-          <div className="shopping-cart-header">
-            <i className="fa fa-shopping-cart cart-icon"></i>
-            <span className="badge">3</span>
-            <div className="shopping-cart-total">
-            <span className="lighter-text">Total:</span>
-            <span className="main-color-text">$2,229.97</span>
-        </div>
-    </div> 
-
-    <ul className="shopping-cart-items">
-      <li className="clearfix">
-        <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/195612/cart-item1.jpg" alt="item1" />
-        <span className="item-name">Sony DSC-RX100M III</span>
-        <span className="item-price">$849.99</span>
-        <span className="item-quantity">Quantity: 01</span>
-      </li>
-
-      <li className="clearfix">
-        <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/195612/cart-item2.jpg" alt="item1" />
-        <span className="item-name">KS Automatic Mechanic...</span>
-        <span className="item-price">$1,249.99</span>
-        <span className="item-quantity">Quantity: 01</span>
-      </li>
-
-      <li className="clearfix">
-        <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/195612/cart-item3.jpg" alt="item1" />
-        <span className="item-name">Kindle, 6" Glare-Free To...</span>
-        <span className="item-price">$129.99</span>
-        <span className="item-quantity">Quantity: 01</span>
-      </li>
-    </ul>
-
-    <a href="#" className="button">Checkout</a>
-  </div> 
-</div> 
+      <Header eventlogo={changeCategory}/>
+      <Client client={client} setClient={setClient} />
+      <ProductList 
+        products={PRODUCTS}
+        addToCart={addToCart}
+        removeFromCart={removeFromCart}
+        deleteFromCart={deleteFromCart}
+        getTotal={getTotal}
+        sendOrders={sendOrders}
+        client={client}
+      />
     </>
   )
 }
