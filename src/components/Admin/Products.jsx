@@ -3,7 +3,6 @@ import React from 'react'
 function TrProduct ({data, edit, remove }) {
   return (
     <tr>
-      <td>{data.id}</td>
       <td>{data.title}</td>
       <td>{data.description}</td>
       <td>{data.category}</td>
