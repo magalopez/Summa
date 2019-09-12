@@ -2,7 +2,7 @@ import React from 'react'
 import TrProduct from './Products'
 // import './table.css' 
 
-function Table ({data}) {
+function Table ({data, edit, remove}) {
   return (
     <div className='container-list'>
       <table className="fixed_headers">
@@ -18,7 +18,7 @@ function Table ({data}) {
         </thead>
         <tbody>
           {data.map(prod => (
-          <TrProduct key={`ProductItem-${prod.title}`} data={prod} edit={'edit'} remove={'remove'}/>))}
+          <TrProduct key={`ProductItem-${prod.title}`} data={prod} edit={edit} remove={remove}/>))}
         </tbody>
       </table>
     </div>

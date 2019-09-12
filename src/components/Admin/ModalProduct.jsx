@@ -1,7 +1,5 @@
 import React from 'react'
 
-
-
 function ModalProduct ({handleClose, show, children }) {
   
   const showHideClassName = show ? "modal display-block" : "modal display-none";

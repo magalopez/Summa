@@ -6,7 +6,6 @@ import {firestore} from '../../services/Firebase-config'
 import ModalProduct from './ModalProduct';
 
 function SectionProducts ({data}) {
-  const [id, setId] = useState('');
   const [name,setName] = useState('');
   const [description, setDescription] = useState('')
   const [price, setPrice] = useState(0)
@@ -14,12 +13,13 @@ function SectionProducts ({data}) {
   const [image, setImage] = useState('')
   const [show, setShow] = useState(false)
 
+
+
+
   const showModal = () => setShow(true)
   
   const hideModal = () => setShow(false) 
   
-  const handlerId = (e) => setId(e.target.value.toLowerCase())
-
   const handlerName = (e) => setName(e.target.value.toLowerCase())
   
   const handlerDescription = (e) => setDescription(e.target.value.toUpperCase())
@@ -34,7 +34,7 @@ function SectionProducts ({data}) {
     try 
     {
       await firestore.collection('products').add({
-        id: id,
+        // id: id,
 			  title: name,
 			  description: description,
 			  price: price,
@@ -48,10 +48,10 @@ function SectionProducts ({data}) {
     }
   }
 
-  const editProductData = async (productId,name,description,price,category,image) => {
+  const editProductData = async (id,name,description,price,category,image) => {
     try 
     {
-      await firestore.collection('products').doc(productId).update({
+      await firestore.collection('products').doc(id).update({
         title: name,
 			  description: description,
 			  price: price,
@@ -65,10 +65,10 @@ function SectionProducts ({data}) {
     }
   }
 
-  const deleteProduct = async (postId) => {
+  const deleteProduct = async (id) => {
   try
   {
-  await firestore.collection("products").doc(postId).delete();
+  await firestore.collection("products").doc.id(id).delete();
   }
   catch (e)
   {
@@ -84,7 +84,6 @@ function SectionProducts ({data}) {
       </div>
       <ModalProduct handleClose={hideModal} show={show}>
         <form className="register-form">
-          <input type="text" placeholder="Id" maxLength="10" onChange={handlerId}/>
           <input type="text" placeholder="Nombre" maxLength="30" onChange={handlerName}/>
           <input type="text" placeholder="Descripcion" maxLength="190" onChange={handlerDescription}/>
           <input type="number" placeholder="Precio" max="6" onChange={handlerPrice}/>
@@ -93,7 +92,7 @@ function SectionProducts ({data}) {
         </form>
         <button onClick={()=>addProductData()}>Guardar</button>
       </ModalProduct> 
-      <Table data={data}/>
+      <Table data={data} edit={editProductData} remove={deleteProduct}/>
     </>
   )
 }
