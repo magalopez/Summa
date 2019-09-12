@@ -50,8 +50,11 @@ body {
 
 .btn-admin
 {
+  display: flex;
+  justify-content: center;
   width: 200px;
   height: 50px;
+  margin: 20px;
 }
 .box-input 
 {

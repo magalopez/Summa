@@ -13,6 +13,9 @@ function Header ({event, eventlogo}) {
       </div>
      
       <div className="btn-admin">
+        <Link to="/carrito">
+          <button className="button" >Carrito</button>
+        </Link> 
         {auth === true ?  
         <Link to="/admin">
           <button className="button" >Administrador</button>

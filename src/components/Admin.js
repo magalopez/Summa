@@ -46,7 +46,7 @@ function Admin () {
     <>
       <herder className="header">
         <Link to="/"><img src={"https://image.flaticon.com/icons/svg/263/263115.svg"} className="home"/></Link>
-        <h3 className="admin">Administrador E-Commerce</h3>
+        <h2 className="admin">Administrador E-Commerce</h2>
         <button className="button"><Link className="especial" to={'/Login'} onClick={()=>logout()}>Cerrar Sesion</Link></button>
 
       </herder>

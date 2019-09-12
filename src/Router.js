@@ -10,7 +10,7 @@ import Home from './components/Home';
 import Login from './components/Login';
 import Admin from './components/Admin';
 import Default from './components/Default';
-import Details from './components/Details';
+import ShoppingCart from './components/ShoppingCart';
 
 function Ruter () {
   const [ auth ] = useContext(AuthUserContext)
@@ -36,7 +36,7 @@ function Ruter () {
         <Router>
               <Switch>
                 <Route exact path="/" component={Home} />
-                <Route exact path="/detalles" component={Details}/>
+                <Route exact path="/carrito" component={ShoppingCart}/>
                 <ActiveUser path="/login" component={Login} />
                 <SecretRoute path="/admin" component={Admin}/>   
                 <Route component={Default} /> 

@@ -1,7 +1,7 @@
 import React from 'react'
 import './modal.css'
 
-function ModalDetail ({object, show, handleClose}) {
+function ModalDetail ({object, show, handleClose,addCart}) {
 
   const showHideClassName = show ? "modaltwo display-block" : "modaltwo display-none";
   
@@ -14,7 +14,8 @@ function ModalDetail ({object, show, handleClose}) {
           <h3 className="price">{`S./${object.price}`}
           </h3>
           <div className="control">
-            <button className="btn">
+            <button className="btn" 
+            onClick={()=>{addCart({object})}}>
               <span className="buy">Añadir</span>
             </button>
             <button className="btn btncancel" onClick={()=>handleClose()}>

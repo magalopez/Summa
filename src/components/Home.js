@@ -1,7 +1,7 @@
 import React, { useContext, useState } from 'react'
 
 //API Contex
-import { ProductsContext, CategoriesContext, SearchContext } from '../Context'
+import { ProductsContext, CategoriesContext, SearchContext, CartContext } from '../Context'
 
 //Components
 import Header from './Home/Header'
@@ -14,6 +14,7 @@ function Home () {
   const [SEARCH, SETSEARCH] = useContext(SearchContext);
   const [MODAL, SETMODAL] = useState(false)
   const [PRODMODAL, SETPRODMODAL] = useState({})
+  const [cart, setCart] = useContext(CartContext);
 
   //Categories
   const uniqueItems = (x, i, array) => array.indexOf(x) === i;
@@ -37,13 +38,19 @@ function Home () {
   }
  
   const hideModal = () => SETMODAL(false) 
+
+  const addProductCart = (object) => {
+    const newProducts =[...cart, {object}]
+    setCart(newProducts)
+    SETMODAL(false)
+  }
   
   return (
     <>
       <Header event={handlerSearch} eventlogo={changeCategory}/>
       { MODAL !== true ? 
       <ContainerProducts data={PRODUCTS} categories={PRODUCT_CATEGORIES} changeCategory={changeCategory} displayCategory={CATEGORIES} search={SEARCH} modal={showModal}/> :
-      <ModalDetail object={PRODMODAL} handleClose={hideModal} show={MODAL}/>
+      <ModalDetail object={PRODMODAL} addCart={addProductCart} handleClose={hideModal} show={MODAL}/>
     }
       
     </>
