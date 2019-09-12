@@ -1,11 +1,8 @@
-import React, { useState } from 'react'
-import './Styles/form.css'
+import React from 'react'
 import { Link } from 'react-router-dom'
 
 
 function FormLogIn ({login , email, password}) {
-
-
   return (
     <>
       <div className="form-wrap">

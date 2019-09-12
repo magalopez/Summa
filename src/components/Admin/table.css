@@ -3,6 +3,7 @@
   width: 750;
   table-layout: fixed;
   border-collapse: collapse;
+  margin: 50px;
 }
 
 th { text-decoration: underline; }
@@ -10,10 +11,11 @@ th { text-decoration: underline; }
 th, td {
   padding: 5px;
   text-align: left;
+  height: 100px;
 }
   
 td:nth-child(1), th:nth-child(1) { min-width: 200px; }
-td:nth-child(2), th:nth-child(2) { min-width: 400px; }
+td:nth-child(2), th:nth-child(2) { min-width: 650px; }
 td:nth-child(3), th:nth-child(3) { min-width: 200px; }
 td:nth-child(4), th:nth-child(4) { width: 200px; }
 td:nth-child(5), th:nth-child(5) { width: 200px; }
@@ -25,7 +27,7 @@ thead {
 
 tr {
   display: block;
-  /* position: relative; */
+  position: relative;
 }
 
 tbody {

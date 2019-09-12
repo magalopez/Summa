@@ -8,14 +8,15 @@ import { authentication } from '../services/Firebase-config'
 //Components
 import SectionProducts from './Admin/SectionProducts';
 import MenuOps from './Admin/MenuOps';
+import SectionUsers from './Admin/SectionUsers';
 
 function Admin () {
-  const [secProd, setSecProd] = useState(false)
+  const [secProd, setSecProd] = useState(true)
   const [secUser, setSecUser] = useState(false)
-  const [secOrder, setSecOrder] = useState(true)
+  const [secOrder, setSecOrder] = useState(false)
 
-  const [, setAuth ] = useContext(AuthUserContext)
-  const [products, setProducts] = useContext(ProductsContext)
+  const [,setAuth] = useContext(AuthUserContext)
+  const [products] = useContext(ProductsContext)
   
   const logout = async () => {
     try {
@@ -52,11 +53,11 @@ function Admin () {
       <MenuOps logout={logout} products={handlerViewSectionProducts} users={handlerViewSectionUsers} orders={handlerViewSectionOrders}/>
       <section className="sections">
         {secProd===true ? <SectionProducts data={products}/> : <></>}
-        {secUser===true ? <div><h1>USERS</h1></div> : <></>}
+        {secUser===true ? <SectionUsers/> : <></>}
         {secOrder===true ? <div><h1>ORDERS</h1></div> : <></>}
       </section>
-      
-     
+
+  
     </>
   )
 }
