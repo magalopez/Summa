@@ -1,13 +1,11 @@
 import React, { useContext } from 'react'
 import { CartContext } from '../Context'
-import HeaderDetails from './ProductList.jsx/Header'
-import ProductDetails from './ProductList.jsx/Product';
-import '../css/shoppingcart.scss'
+
 
 function ShoppingCart () {
   const [PRODUCTS, SETPRODUCTS] = useContext(CartContext);
   
-  
+  console.log(PRODUCTS); 
   return (
     <>
       {/* <nav>

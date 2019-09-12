@@ -44,6 +44,8 @@ function Home () {
     setCart(newProducts)
     SETMODAL(false)
   }
+
+  console.log(cart)
   
   return (
     <>
