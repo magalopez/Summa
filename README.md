@@ -2,7 +2,7 @@ Este proyecto ha sido creado con ReactJs.
 
 ## Summa
 
-Se trata de una plataforma E-coommerce que permite al usuario tener un control sobre  las administracion del inventario de productos, creacion de nuevos usuarios administradores y visualizacion de los pedidos que realizan los clientes mucho más fácil.
+Se trata de una plataforma E-coommerce que permite al usuario tener un control sobre las administración del inventario de productos, creación de nuevos usuarios administradores y visualización de los pedidos que realizan los clientes mucho más fácil.
 
 #### Web site:
 
