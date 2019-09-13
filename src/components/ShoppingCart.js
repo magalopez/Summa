@@ -1,6 +1,6 @@
 import React, {useContext, useState} from 'react'
 import {CartContext, CategoriesContext} from '../Context'
-import {ORDERSDATA} from '../services/Firebase-config'
+import {firestore} from '../services/Firebase-config'
 
 // Components
 import Client from './Shopping/client'
@@ -28,15 +28,22 @@ function ShoppingCart () {
   };
 
   
-  const sendOrders = (products, clientName) => {
-    ORDERSDATA.add({
-      name: clientName,
-      cart: products,
-      status: "pendiente",
-      time: new Date()
-    });
-    setClient("");
-    SETPRODUCTS([]);
+  const sendOrders = async (products, clientName) => {
+    try 
+    { 
+      await firestore.collection("orders").add({
+        name: clientName,
+        cart: products,
+        status: "pendiente",
+        time: new Date()
+      });
+      setClient("");
+      SETPRODUCTS([]);  
+    }
+    catch (e)
+    {
+      alert(e)
+    }
   };
 
   const changeCategory = (category) => {
