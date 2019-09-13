@@ -1,6 +1,5 @@
 import React from 'react'
 
-
 function OrderFinished ({cart, name,status,id, time}) {
 
   return (

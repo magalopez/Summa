@@ -4,7 +4,6 @@ import { firebaseInit } from "../../services/Firebase-config";
 
 function OrderPending ({cart, name,status,id, time}) {
 
-
   const updateOrder = text => {
     const docOrder = firebaseInit.firestore().doc(`orders/${id}`);
     docOrder.update({
@@ -15,7 +14,6 @@ function OrderPending ({cart, name,status,id, time}) {
   return (
     <>
       <h1>{name}</h1>
-     
       <table>
         <thead>
           <tr>
@@ -36,24 +34,24 @@ function OrderPending ({cart, name,status,id, time}) {
           ))}
         </tbody>
       </table>
-      <div class="is-grouped">
-            <button
-              class="button is-warning"
-              onClick={() => {
-                updateOrder("entregado");
-              }}
+      <div>
+        <button
+          class="button "
+          onClick={() => {
+          updateOrder("entregado");
+          }}
             >
-              Entregado
-            </button>
-            <button
-              class="button is-danger"
-              onClick={() => {
-                updateOrder("cancelado");
-              }}
-            >
-              Cancelado
-            </button>
-          </div>
+          Entregado
+        </button>
+        <button
+          class="button-cancel"
+          onClick={() => {
+          updateOrder("cancelado");
+          }}
+          >
+          Cancelado
+        </button>
+      </div>
     </>
   )
 }

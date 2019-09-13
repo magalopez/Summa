@@ -579,3 +579,36 @@ h3 {
   width: 100%; 
 
 }
+
+.button-cancel 
+{
+  text-transform: uppercase;
+  outline: 0;
+  background: rgb(197, 56, 51);
+  width: 200px;
+  border: 0;
+  padding: 15px;
+  color: #FFFFFF;
+  font-size: 14px;
+  -webkit-transition: all 0.3 ease;
+  transition: all 0.3 ease;
+  cursor: pointer;
+  margin: 20px;
+}
+
+.button-total 
+{
+  text-transform: uppercase;
+  outline: 0;
+  background: rgb(42, 141, 199);
+  width: 200px;
+  border: 0;
+  padding: 40px;
+  color: #FFFFFF;
+  font-size: 30px;
+  -webkit-transition: all 0.3 ease;
+  transition: all 0.3 ease;
+  cursor: pointer;
+  margin: 20px;
+
+}
