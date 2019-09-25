@@ -1,7 +1,7 @@
 import React, { useContext, useState } from 'react'
 
 //API Contex
-import { ProductsContext, CategoriesContext, SearchContext, CartContext } from '../Context'
+import { ProductsContext, CategoriesContext, CartContext } from '../Context'
 
 //Components
 import Header from './Home/Header'
@@ -11,11 +11,10 @@ import ModalDetail from './Home/Modal'
 function Home () {
   const [PRODUCTS,] = useContext(ProductsContext);
   const [CATEGORIES, SETCATEGORIES] = useContext(CategoriesContext);
-  const [SEARCH, SETSEARCH] = useContext(SearchContext);
   const [MODAL, SETMODAL] = useState(false)
   const [PRODMODAL, SETPRODMODAL] = useState({})
   const [cart, setCart] = useContext(CartContext);
-  const [viewProductSearch, setViewProductSearch] = useState(false)
+
   //Categories
   const uniqueItems = (x, i, array) => array.indexOf(x) === i;
 
@@ -26,11 +25,6 @@ function Home () {
   // Events
   const changeCategory = (category) => {
     SETCATEGORIES(category)
-  }
-
-  const handlerSearch = (e) => {
-    SETSEARCH(e.target.value);
-    setViewProductSearch(true)
   }
 
   const showModal = ({id,title,price,description,image}) => {
@@ -49,9 +43,9 @@ function Home () {
     
   return (
     <>
-      <Header event={handlerSearch} eventlogo={changeCategory}/>
+      <Header eventlogo={changeCategory}/>
       { MODAL !== true ? 
-      <ContainerProducts show={viewProductSearch} data={PRODUCTS} categories={PRODUCT_CATEGORIES} changeCategory={changeCategory} displayCategory={CATEGORIES} search={SEARCH} modal={showModal}/> :
+      <ContainerProducts data={PRODUCTS} categories={PRODUCT_CATEGORIES} changeCategory={changeCategory} displayCategory={CATEGORIES}  modal={showModal}/> :
       <ModalDetail object={PRODMODAL} addCart={addProductCart} handleClose={hideModal} show={MODAL}/>}
     </>
   )

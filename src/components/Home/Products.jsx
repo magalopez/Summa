@@ -4,7 +4,7 @@ import Card from './Card'
 import Categories from './Categories'
 
 
-function ContainerProducts ({data, categories, changeCategory, displayCategory,search, modal, show}) {
+function ContainerProducts ({data, categories, changeCategory, displayCategory, modal, show}) {
 
 
   console.log(show)
@@ -18,8 +18,6 @@ function ContainerProducts ({data, categories, changeCategory, displayCategory,s
  ).map(({ title, price, description, id, image, count})=>( 
  <Card key={`ProductItem-${title}`} id={id} title={title} price={price} description={description} image={image} modal={modal} counter={count}/>
  ));
-
-  // const filteredSearch = data.filter((element) => element.title.toLowerCase().includes(search.toLowerCase())).map(({ title, price, description})=>( <Card key={`ProductItem-${title}`} title={title} price={price} description={description} image={image} modal={modal}/>));
 
   return(
     <>

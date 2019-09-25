@@ -1,10 +1,10 @@
 import React from 'react'
 
-function Card ({id,title,price,description,image,count,modal}) {
+function Card ({id,title,price,image,count,modal}) {
   return (
     <div class="container-card">
       <div class="card">
-        <div class="card-head" onClick={()=>{modal({id,title,price,description,image,count})}}>
+        <div class="card-head" onClick={()=>{modal({id,title,price,image,count})}}>
           <img src={image} alt="product" class="product-img"/>
         </div>
         <div class="card-body">
@@ -14,9 +14,6 @@ function Card ({id,title,price,description,image,count,modal}) {
             </span>
           </div>
           <div class="product-properties">
-            <div class="product-detail">
-              {description}
-            </div>
             <div class="product-price">
                 S./<b>{price}</b>
             </div>

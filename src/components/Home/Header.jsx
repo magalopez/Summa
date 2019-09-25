@@ -2,7 +2,7 @@ import React, { useContext } from 'react';
 import { Link } from "react-router-dom"
 import { AuthUserContext } from '../../Context'
 
-function Header ({event, eventlogo}) {
+function Header ({eventlogo}) {
   
   const [ auth ] = useContext(AuthUserContext)
 
@@ -23,12 +23,6 @@ function Header ({event, eventlogo}) {
         <Link to="/login">
           <button className="button" >Administrador</button>
         </Link>}  
-      </div>
-
-      <div className="box-input">
-          <input type="text" onChange={event}/>
-          <span class="bar"></span>
-          <label>Buscar</label>
       </div>
     </header>
   )
