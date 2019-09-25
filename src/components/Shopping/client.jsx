@@ -13,7 +13,10 @@ function Client ({ client, setClient }){
       <div className="form-cart">
         <h2>¿Cómo te llamas?</h2>
           <form>
-          <input className="input" onChange={onChange} value={client} />
+          <input className="input" 
+                 onChange={onChange} 
+                 value={client} 
+          />
           </form>
       </div>
   );

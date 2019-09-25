@@ -23,8 +23,6 @@ function SectionOrders () {
     }
   );
 
-console.log(state)
-
   return (
     <>
       <section >

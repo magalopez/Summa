@@ -43,10 +43,20 @@ function Home () {
     
   return (
     <>
-      <Header eventlogo={changeCategory}/>
-      { MODAL !== true ? 
-      <ContainerProducts data={PRODUCTS} categories={PRODUCT_CATEGORIES} changeCategory={changeCategory} displayCategory={CATEGORIES}  modal={showModal}/> :
-      <ModalDetail object={PRODMODAL} addCart={addProductCart} handleClose={hideModal} show={MODAL}/>}
+      <Header eventlogo={changeCategory} />
+      { MODAL !== true 
+      ? <ContainerProducts data={PRODUCTS} 
+                           categories={PRODUCT_CATEGORIES} 
+                           changeCategory={changeCategory} 
+                           displayCategory={CATEGORIES}  
+                           modal={showModal} 
+                           stateModal={MODAL}
+        /> 
+      : <ModalDetail object={PRODMODAL} 
+                     addCart={addProductCart} 
+                     handleClose={hideModal} 
+                     show={MODAL}
+        />}
     </>
   )
 }

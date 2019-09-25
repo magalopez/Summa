@@ -46,8 +46,16 @@ function Login () {
 
   return (
     <>
-      <Link to={'/'}><img src={"https://image.flaticon.com/icons/svg/263/263115.svg"} className="home"/></Link>
-      <FormLogIn login={submit} email={changeEmail} password={changePassword} />
+      <Link to={'/'}>
+        <img src={"https://image.flaticon.com/icons/svg/263/263115.svg"} 
+             alt="icons"
+             className="home"
+        />
+      </Link>
+      <FormLogIn login={submit} 
+                 email={changeEmail} 
+                 password={changePassword} 
+      />
     </>
   )
 }

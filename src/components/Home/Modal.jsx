@@ -15,16 +15,23 @@ function ModalDetail ({object, show, handleClose,addCart}) {
           </h3>
           <div className="control">
             <button className="btn" 
-            onClick={()=>{addCart({object})}}>
-              <span className="buy">Añadir</span>
+                    onClick={()=>{addCart({object})}}
+            >
+              <span className="buy">
+                Añadir
+              </span>
             </button>
             <button className="btn btncancel" onClick={()=>handleClose()}>
-              <span>cancelar</span>
+              <span>
+                cancelar
+              </span>
             </button>
           </div>    
         </div>
       <div className="product-image">
-        <img src={object.image} alt={object.title}/>
+        <img src={object.image} 
+             alt={object.title}
+        />
       </div>
       </div>
     </>

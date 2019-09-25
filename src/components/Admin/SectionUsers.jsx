@@ -31,11 +31,24 @@ function SectionUsers () {
       <div className="form-wrap">
 		 		<div className="tabs-content">
 			    <div>
-				    <form className="login-form" action="" method="post">
-					    <input type="text" className="input" id="user_login" autocomplete="off" placeholder="Email" value={email} onChange={changeEmail}/>
-					    <input type="password" className="input" id="user_pass" autocomplete="off" placeholder="Password" value={password} onChange={changePassword}/>
+				    <form className="login-form">
+              <input type="text" 
+                     className="input" 
+                     placeholder="Email" 
+                     value={email} 
+                     onChange={changeEmail}
+              />
+              <input type="password" 
+                     className="input" 
+                     placeholder="Password" 
+                     value={password} 
+                     onChange={changePassword}
+              />
 				    </form>
-            <button className="button" value="Registrar" onClick={()=>registerUser()}>Registrar</button>
+            <button className="button" 
+                    value="Registrar" 
+                    onClick={()=>registerUser()}>Registrar
+            </button>
 			    </div>
 		    </div>
 	    </div> 

@@ -77,19 +77,46 @@ function SectionProducts ({data}) {
     <>
       <div className="section-products">
         <h1>Productos</h1>
-        <input type="submit" value="Agregar Producto" className="button" onClick={()=> showModal()}/>      
+        <input type="submit" 
+               value="Agregar Producto" 
+               className="button" 
+               onClick={()=> showModal()}/>      
       </div>
-      <ModalProduct handleClose={hideModal} show={show}>
+      <ModalProduct handleClose={hideModal} 
+                    show={show}
+      >
         <form className="register-form">
-          <input type="text" placeholder="Nombre" maxLength="30" onChange={handlerName}/>
-          <input type="text" placeholder="Descripcion" maxLength="190" onChange={handlerDescription}/>
-          <input type="number" placeholder="Precio" max="6" onChange={handlerPrice}/>
-          <input type="text" placeholder="Categoria" maxLength="15" onChange={handlerCategorie}/>
-          <input type="text" placeholder="Imagen" maxLength="150" onChange={handlerImage}/>
+          <input type="text" 
+                 placeholder="Nombre" 
+                 maxLength="30" 
+                 onChange={handlerName}
+          />
+          <input type="text" 
+                 placeholder="Descripcion" 
+                 maxLength="190" 
+                 onChange={handlerDescription}
+          />
+          <input type="number" 
+                 placeholder="Precio" 
+                 max="6" 
+                 onChange={handlerPrice}
+          />
+          <input type="text" 
+                 placeholder="Categoria" 
+                 maxLength="15" 
+                 onChange={handlerCategorie}
+          />
+          <input type="text" 
+                 placeholder="Imagen" 
+                 maxLength="150" 
+                 onChange={handlerImage}
+          />
         </form>
         <button onClick={()=>addProductData()}>Guardar</button>
       </ModalProduct> 
-      <Table data={data} edit={editProductData} remove={deleteProduct}/>
+      <Table data={data} 
+             edit={editProductData} 
+             remove={deleteProduct}/>
     </>
   )
 }

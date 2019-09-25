@@ -7,14 +7,10 @@ import Client from './Shopping/client'
 import ProductList from './Shopping/productList';
 import Header from './Home/Header'
 
-
-
 function ShoppingCart () {
   const [PRODUCTS, SETPRODUCTS] = useContext(CartContext);
   const [, setCategory] = useContext(CategoriesContext)
   const [client, setClient] = useState('')
-  console.log(PRODUCTS); 
-
 
   //Eliminar producto de la lista
   const deleteFromCart = id => {
@@ -52,13 +48,14 @@ function ShoppingCart () {
 
   return (
     <>
-      <Header eventlogo={changeCategory}/>
-      <Client client={client} setClient={setClient} />
-      <ProductList 
-        products={PRODUCTS}
-        deleteFromCart={deleteFromCart}
-        sendOrders={sendOrders}
-        client={client}
+      <Header eventlogo={changeCategory} />
+      <Client client={client} 
+              setClient={setClient} 
+      />
+      <ProductList products={PRODUCTS}
+                   deleteFromCart={deleteFromCart}
+                   sendOrders={sendOrders}
+                   client={client}
       />
     </>
   )

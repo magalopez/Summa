@@ -5,7 +5,6 @@ function OrderFinished ({cart, name,status,id, time}) {
   return (
     <>
       <h1>{name}</h1>
-     
       <table>
         <thead>
           <tr>
